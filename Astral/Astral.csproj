@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>2.3</Version>
+    <Authors>Simon Kennedy &lt;sffjunkie+code@gmail.com&gt;</Authors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageTags>sunrise;sunset;moon;sun;moon-phase;dusk;dawn</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Calculations for the position of the sun and moon</Description>
+    <PackageId>SFFJunkie.Astral</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NodaTime" Version="3.0.5" />
+    <PackageReference Include="NodaTime.Testing" Version="3.0.5" />
+  </ItemGroup>
+
+</Project>
