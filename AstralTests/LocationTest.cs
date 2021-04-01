@@ -31,6 +31,23 @@ namespace SFFJunkie.Astral.Test
         }
 
         [Fact]
+        public void Location_LocationInfo()
+        {
+            LocationInfo expected = infoFixture.LondonInfo;
+            Location loc = new(infoFixture.LondonInfo);
+            Assert.True(expected.Equals(loc.Info));
+        }
+
+        [Fact]
+        public void Location_Observer()
+        {
+            LocationInfo info = infoFixture.LondonInfo;
+            Observer expected = new(info.Latitude, info.Longitude, 0.0, 0.0);
+            Location loc = new(infoFixture.LondonInfo);
+            Assert.True(expected.Equals(loc.Observer));
+        }
+
+        [Fact]
         public void Location_NameProperty()
         {
             Location loc = new();

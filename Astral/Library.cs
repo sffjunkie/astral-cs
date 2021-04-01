@@ -23,7 +23,7 @@ namespace SFFJunkie.Astral
         /// <summary>
         /// Using 32 arc minutes as sun's apparent diameter
         /// </summary>
-        public const double SunApparentRadius = 32.0 / (60.0 * 2.0);
+        internal const double SunApparentRadius = 32.0 / (60.0 * 2.0);
 
         /// <summary>
         /// The current date/time in the timezone specified
@@ -32,10 +32,17 @@ namespace SFFJunkie.Astral
         /// <returns>The current date/time in the timezone specified</returns>
         public static ZonedDateTime Now(string TimezoneName = "UTC")
         {
-            var i = new Instant();
-            var tz = GetTimezone(TimezoneName);
-            var dt = new ZonedDateTime(i, tz);
-            return dt;
+            var now = DateTime.UtcNow;
+            var i = Instant.FromDateTimeUtc(now);
+            if (TimezoneName == "UTC")
+            {
+                return new ZonedDateTime(i, DateTimeZone.Utc);
+            }
+            else
+            {
+                var tz = GetTimezone(TimezoneName);
+                return new ZonedDateTime(i, DateTimeZone.Utc).WithZone(tz);
+            }
         }
 
         /// <summary>
@@ -43,7 +50,7 @@ namespace SFFJunkie.Astral
         /// </summary>
         /// <param name="TimezoneName"></param>
         /// <returns></returns>
-        public static LocalDate Today(string TimezoneName)
+        public static LocalDate Today(string TimezoneName = "UTC")
         {
             return Now(TimezoneName).Date;
         }

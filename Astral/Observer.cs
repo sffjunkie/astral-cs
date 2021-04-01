@@ -57,5 +57,10 @@ namespace SFFJunkie.Astral
             this.Elevation = Elevation;
             this.DistanceToFeature = DistanceToFeature;
         }
+
+        public bool Equals(Observer obs)
+        {
+            return (Latitude == obs.Latitude && Longitude == obs.Longitude && Elevation == obs.Elevation && DistanceToFeature == obs.DistanceToFeature);
+        }
     }
 }

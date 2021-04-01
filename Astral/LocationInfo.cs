@@ -70,6 +70,11 @@ namespace SFFJunkie.Astral
             return info;
         }
 
+        public bool Equals(LocationInfo loc)
+        {
+            return (Name == loc.Name && Region == loc.Region && Latitude == loc.latitude && Longitude == loc.Longitude);
+        }
+
         public string TimezoneGroup
         {
             get => Timezone.Split("/")[0];
